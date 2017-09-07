@@ -4,9 +4,4 @@ certification.json
 deepblu_lib__.py
 main.py
 log.txt
-action.py
-common.py
-GlobalString.py
-main.py
-android_login.py
-android_signup.py
+
