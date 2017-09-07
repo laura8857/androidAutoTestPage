@@ -230,11 +230,14 @@ def screenshot(file_name):
 
 class move:
     def __init__(self, el1=None, el2=None):
-        self.el1 = el1
-        self.el2 = el2
+        if el1 is not None:
+            self.el1 = el1
+        if el2 is not None:
+            self.el2 = el2
 
     # el1 滑到 el2
     def touch_action_move(self):
+        log('[touch_action_move] %s to %s' %(str(self.el1),str(self.el2)))
         try:
 
             el_start = driver.find_element(self.el1[0], self.el1[1])
@@ -242,6 +245,7 @@ class move:
             TouchAction(driver).press(el_start).move_to(el_end).release().perform()
         except Exception as e:
             log(e, 'w')
+        log('[Error][touch_action_move] %s to %s' % (str(self.el1), str(self.el2)))
 
     # 14/16滑到11/16  小滑動
     def swipe(self):
@@ -269,6 +273,7 @@ class move:
 
     # 滑動找元件  14/16滑到11/16  先往下滑動 找不到 在往上滑動找
     def swip_find_el(self,text=None):
+        log('[swip_find_el] %s' % (str(self.el1)))
         try:
             # 絕對位置 起始點 結束點
             list = size()
@@ -283,7 +288,7 @@ class move:
             for x in range(10):
                 if element(self.el1).wait():
                     if text is not None:
-                        el_text = driver.find_element(self.element[0], self.element[1]).text
+                        el_text = driver.find_element(self.el1[0], self.el1[1]).text
                         if el_text == text:
                             return True
                     else:
@@ -309,5 +314,5 @@ class move:
                 driver.swipe(startx, endy, startx, starty, 500)
 
         except Exception as e:
-            log(e, 'w')
+            log('[Error][swip_find_el] %s.Message:%s' % (str(self.el1),e), 'w')
             return False

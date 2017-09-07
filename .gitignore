@@ -10,3 +10,5 @@ GlobalString.py
 main.py
 android_login.py
 android_signup.py
+appium_init.py
+AndroidAppTest/

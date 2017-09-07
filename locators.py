@@ -102,7 +102,8 @@ class MenuPageLocators(object):
                                      'android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/'
                                      'android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/'
                                      'android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/'
-                                     'android.widget.ListView[1]/android.widget.LinearLayout[12]')
+                                     'android.widget.ListView[1]/android.widget.LinearLayout[12]/'
+                                     'android.widget.LinearLayout[1]/android.widget.TextView[1]')
     btn_logout_ok       = (By.ID, 'android:id/button1')
     btn_logout_cancel   = (By.ID, 'android:id/button2')
 

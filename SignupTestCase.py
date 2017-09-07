@@ -25,12 +25,12 @@ class SignupUnitTest(unittest.TestCase):
             log('[Test Case][%s] Fail' % (self._testMethodName), lvl='w')
         log('[Test Case][%s] end' % (self._testMethodName), lvl='i')
 
-    # # login
-    # def test_95(self):
-    #     self.assertTrue(LoginOut().check_login(False))
-    #     self.assertTrue(LoginOut().login())
-    #     SignupUnitTest.result = True
-    #     self.assertTrue(SignupUnitTest.result)
+    # login
+    def test_95(self):
+        self.assertTrue(LoginOut().check_login(False))
+        self.assertTrue(LoginOut().login())
+        SignupUnitTest.result = True
+        self.assertTrue(SignupUnitTest.result)
 
 
     # verify_code
@@ -70,7 +70,7 @@ class SignupUnitTest(unittest.TestCase):
     def test_1948(self):
         rm_email(acc)
         self.assertTrue(Signup().signup(usr, acc, pwd))
-        self.assertTrue(Signup.resend_email(email=acc))
+        self.assertTrue(Signup().resend_email(email=acc))
         SignupUnitTest.result = True
 
     # signup_expire_token
@@ -78,22 +78,22 @@ class SignupUnitTest(unittest.TestCase):
         rm_email(acc)
         self.assertTrue(Signup().signup(usr, acc, pwd))
         self.assertTrue(Signup().skip())
-        self.assertTrue(Signup.signup_token_expire(Useremail=acc))
+        self.assertTrue(Signup().signup_token_expire(Useremail=acc))
         SignupUnitTest.result = True
 
     # singup_skip
     def test_1951(self):
         rm_email(acc)
         self.assertTrue(Signup().signup(usr, acc, pwd))
-        self.assertTrue(Signup.skip())
-        self.assertTrue(LoginOut.logout())
-        self.assertTrue(Signup.login_after_skip(email=acc,password=pwd))
+        self.assertTrue(Signup().skip())
+        self.assertTrue(LoginOut().logout())
+        self.assertTrue(Signup().login_after_skip(email=acc,password=pwd))
         SignupUnitTest.result = True
 
     def test_1951_2(self):
         rm_email(acc)
         self.assertTrue(Signup().signup(usr, acc, pwd))
-        self.assertTrue(Signup.skip_v2())
+        self.assertTrue(Signup().skip_v2())
         SignupUnitTest.result = True
 
     # Account - English characters are sent lowercase
@@ -102,8 +102,8 @@ class SignupUnitTest(unittest.TestCase):
         self.assertTrue(Signup().signup(email="TEST@deepblu.com"))
         self.assertTrue(Signup().verify(verify='code',Useremail='test@deepblu.com'))
         back()
-        self.assertTrue(LoginOut.logout())
-        self.assertTrue(LoginOut.login(email='test@deepblu.com',password=pwd))
+        self.assertTrue(LoginOut().logout())
+        self.assertTrue(LoginOut().login(email='test@deepblu.com',password=pwd))
         SignupUnitTest.result = True
 
 if __name__ == '__main__':

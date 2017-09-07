@@ -86,6 +86,7 @@ class LoginOut:
         try:
             element(MainTabLocators.btn_menu).click()
             move(MenuPageLocators.btn_logout).swip_find_el(text='Log Out')
+            element(MenuPageLocators.btn_logout).click()
             element(MenuPageLocators.btn_logout_ok).click()
             if not element(MainPageLocators.btn_login).wait():
                 return False
@@ -154,8 +155,8 @@ class Signup:
                     link = verifydict["link"]
                     base.verify_by_link(link)
                     screenshot("Verify_link")
-            if not element(VerifyEmailPageLocators.btn_edit).wait():
-                return False
+            # if not element(VerifyEmailPageLocators.btn_edit).wait():
+            #     return False
 
             screenshot("Veirfy")
             log("[Verify] end")
@@ -298,12 +299,14 @@ class Signup:
         try:
             if not token_expired(Useremail):
                 return False
-            element(MainTabLocators.btn_create_post).click()
+            sleep(2)
+            element(MainTabLocators.btn_community).click()
             # check token expired successfully or not(enter to email verify page)
             if not element(VerifyEmailPageLocators.txt_verify).wait():
                 return False
             screenshot("SignUpTokenExpire")
             log("[Sign up token expire] end")
+            return True
         except Exception as e:
             log(e, 'w')
             return False
