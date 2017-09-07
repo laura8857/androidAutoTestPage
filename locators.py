@@ -140,6 +140,31 @@ class ChangeEmailPageLocators(object):
     txt_acc             = (By.ID, 'com.deepblu.android.deepblu.internal:id/editTextEmail')
     btn_submit          = (By.ID, 'com.deepblu.android.deepblu.internal:id/buttonSignUp')
 
+# create post 頁面
+class PostPageLocators(object):
+    btn_txt             = (By.ID, 'com.deepblu.android.deepblu.internal:id/text_post_group')
+    btn_photo           = (By.ID, 'com.deepblu.android.deepblu.internal:id/photo_post_group')
+    btn_video           = (By.ID, 'com.deepblu.android.deepblu.internal:id/video_post_group')
+    btn_log             = (By.ID, 'com.deepblu.android.deepblu.internal:id/divelog_post_group')
+    btn_link            = (By.ID, 'com.deepblu.android.deepblu.internal:id/link_post_group')
+
+    btn_back            = (By.XPATH, '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/'
+                                     'android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/'
+                                     'android.widget.RelativeLayout[1]/android.view.ViewGroup[1]/'
+                                     'android.widget.ImageButton[1]')
+    input_link          = (By.ID, 'com.deepblu.android.deepblu.internal:id/edit_body')
+    img_og              = (By.ID, 'com.deepblu.android.deepblu.internal:id/open_graph_group')
+    txt_content         = (By.ID, 'com.deepblu.android.deepblu.internal:id/post_caption')
+    btn_ctrl_media      = (By.ID, 'com.deepblu.android.deepblu.internal:id/btn_control_media')
+    btn_ctrl_link       = (By.ID, 'com.deepblu.android.deepblu.internal:id/btn_control_link')
+    btn_ctrl_hashtag    = (By.ID, 'com.deepblu.android.deepblu.internal:id/btn_control_hashtag')
+    btn_ctrl_privacy    = (By.ID, 'com.deepblu.android.deepblu.internal:id/spinner_privacy')
+    btn_ctrl_post       = (By.ID, 'com.deepblu.android.deepblu.internal:id/btn_control_post')
+    txt_char_tips       = (By.ID, 'com.deepblu.android.deepblu.internal:id/text_char_tips')
+    txt_hashtag         = (By.ID, 'com.deepblu.android.deepblu.internal:id/new_hash_tag')
+    txt_message         = (By.ID, 'android:id/message')
+    btn_ok              = (By.ID, 'android:id/button1')
+    btn_cancel          = (By.ID, 'android:id/button2')
 #編輯profile頁面 not yetttt
 class EditProfilePageLocators(object):
     img_backgroud       = (By.ID, 'com.deepblu.android.deepblu.internal:id/user_profile_edit_background')

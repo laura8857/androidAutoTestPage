@@ -14,10 +14,10 @@ class LoginOut:
     def __init__(self):
         pass
 
-    def check_login(self,status):
+    def check_login(self, status):
         log('[check login] start')
         try:
-            log('[check login] status is %s'% status)
+            log('[check login] status is %s' % status)
             if status is True:
                 if element(MainTabLocators.btn_create_post).wait():
                     pass
@@ -29,9 +29,8 @@ class LoginOut:
             log('[check login] end')
             return True
         except Exception as e:
-            log(e,'w')
+            log(e, 'w')
             return False
-
 
     def version_skip(self):
         log('[skip version check] start')
@@ -63,7 +62,6 @@ class LoginOut:
             log(e, 'w')
             return False
 
-
     def login_skip(self):
         log('[login_skip] start')
         try:
@@ -81,8 +79,6 @@ class LoginOut:
         except Exception as e:
             log(e, 'w')
             return False
-
-
 
     def logout(self):
         log('[logout] start')
@@ -103,13 +99,11 @@ class LoginOut:
             return False
 
 
-
-
 class Signup:
     def __init__(self):
         pass
 
-    def signup(self,username=None, email=None, password=None):
+    def signup(self, username=None, email=None, password=None):
         log("[Sign up] start")
         try:
             if username is None:
@@ -138,9 +132,8 @@ class Signup:
             log(e, 'w')
             return False
 
-
     # verify:code/url
-    def verify(self,verify='code', Useremail=None):
+    def verify(self, verify='code', Useremail=None):
         log("[Verify] start")
         try:
             if Useremail is None:
@@ -208,7 +201,7 @@ class Signup:
             log(e, 'w')
             return False
 
-    def change_email(self,email=None):
+    def change_email(self, email=None):
         log("[Sign up change email] start")
         try:
             if email is None:
@@ -227,7 +220,7 @@ class Signup:
             if not element(VerifyEmailPageLocators.txt_verify).wait():
                 return False
 
-            if not self.verify(verify='code',Useremail=changeUseremail):
+            if not self.verify(verify='code', Useremail=changeUseremail):
                 return False
 
             screenshot("SignUp_changeEmail")
@@ -238,7 +231,7 @@ class Signup:
             log(e, 'w')
             return False
 
-    def resend_email(self,email=None):
+    def resend_email(self, email=None):
         log("[Sign up resend email] start")
         try:
             if email is None:
@@ -252,7 +245,7 @@ class Signup:
             sleep(0.5)
             screenshot('SignUp_resendEmail')
 
-            if not self.verify(verify='code',Useremail=email):
+            if not self.verify(verify='code', Useremail=email):
                 return False
 
             screenshot("SignUp_resendEamil_success")
@@ -300,7 +293,7 @@ class Signup:
             log(e, 'w')
             return False
 
-    def signup_token_expire(self,Useremail):
+    def signup_token_expire(self, Useremail):
         log("[Sign up token expire] start")
         try:
             if not token_expired(Useremail):
@@ -315,7 +308,7 @@ class Signup:
             log(e, 'w')
             return False
 
-    def login_after_skip(self,email=None,password=None):
+    def login_after_skip(self, email=None, password=None):
         log("[Login after skip] start")
         try:
             LoginOut().version_skip()
@@ -338,3 +331,74 @@ class Signup:
             return True
         except Exception as e:
             log(e, 'w')
+            return False
+
+class MainPost:
+    def __init__(self):
+        pass
+
+    def post_text(self):
+        log("[Post Text] start")
+        try:
+            if not element(MainTabLocators.btn_create_post).click():
+                return False
+            if not element(PostPageLocators.btn_txt).click():
+                return False
+            content = '[AutoTest]\n' + time.strftime("%Y%m%d%H%M%S")
+            if not element(PostPageLocators.txt_content).input(content):
+                return False
+            if not element(PostPageLocators.btn_ctrl_hashtag).click():
+                return False
+            if not element(PostPageLocators.txt_hashtag).input('test'):
+                return False
+            enter()
+            if not element(PostPageLocators.btn_ctrl_post).click():
+                return False
+            if not element(PostPageLocators.btn_ok).click():
+                return False
+            sleep(5)
+            if not element(MainTabLocators.btn_create_post).wait():
+                return False
+
+            screenshot("PostText")
+            log("[Post Text] end")
+            return True
+        except Exception as e:
+            log(e, 'w')
+            return False
+
+    def post_link(self):
+        log("[Post Link] start")
+        try:
+            if not element(MainTabLocators.btn_create_post).click():
+                return False
+            if not element(PostPageLocators.btn_link).click():
+                return False
+            if not element(PostPageLocators.input_link).input('https://test.deepblu.com/discover/live'):
+                return False
+            if not element(PostPageLocators.btn_ok).click():
+                return False
+            if not element(PostPageLocators.img_og).wait():
+                return False
+            content = '[AutoTest]\n' + time.strftime("%Y%m%d%H%M%S")
+            if not element(PostPageLocators.txt_content).input(content):
+                return False
+            if not element(PostPageLocators.btn_ctrl_hashtag).click():
+                return False
+            if not element(PostPageLocators.txt_hashtag).input('test'):
+                return False
+            enter()
+            if not element(PostPageLocators.btn_ctrl_post).click():
+                return False
+            if not element(PostPageLocators.btn_ok).click():
+                return False
+            sleep(5)
+            if not element(MainTabLocators.btn_create_post).wait():
+                return False
+            screenshot("PostLink")
+            log("[Post Link] end")
+            return True
+
+        except Exception as e:
+            log(e, 'w')
+            return False

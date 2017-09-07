@@ -194,6 +194,7 @@ class element:
             except Exception as e:
                 log("[Error][click] The element source %s: %s can't be clicked.Message: %s" % (self.element[0], self.element[1], e),
                     lvl='e')
+                return False
         else:
             log("[Error][click] The element source %s: %s can't be clicked." % (self.element[0], self.element[1]),
                 lvl='e')
@@ -209,6 +210,7 @@ class element:
             except Exception as e:
                 log("[Error][input] The element source %s: %s can't be input data.Message: %s" % (self.element[0], self.element[1],e),
                     lvl='e')
+                return False
         else:
             log("[Error][input] The element source %s: %s can't be input data." % (self.element[0], self.element[1]),
                 lvl='e')
