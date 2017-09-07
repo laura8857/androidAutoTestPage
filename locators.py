@@ -152,6 +152,9 @@ class PostPageLocators(object):
                                      'android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/'
                                      'android.widget.RelativeLayout[1]/android.view.ViewGroup[1]/'
                                      'android.widget.ImageButton[1]')
+    btn_discard         = (By.ID, 'com.deepblu.android.deepblu.internal:id/dialog_first_item')
+    btn_go_back         = (By.ID, 'com.deepblu.android.deepblu.internal:id/dialog_second_item')
+
     input_link          = (By.ID, 'com.deepblu.android.deepblu.internal:id/edit_body')
     img_og              = (By.ID, 'com.deepblu.android.deepblu.internal:id/open_graph_group')
     txt_content         = (By.ID, 'com.deepblu.android.deepblu.internal:id/post_caption')
